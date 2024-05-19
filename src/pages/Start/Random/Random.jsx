@@ -70,20 +70,8 @@ const Random = ({ data, handleClick, randomSwitch, type, text }) => { // data - 
 				blackRoles.push(`${donRole.id < 10 ? '0' + donRole.id : donRole.id} ${donRole.role}`);
 			} // Добавление Дона в массив blackRoles
 
-			const werewolfRole = data.find(item => item.role.includes(roles.werewolf.name));
-			if (werewolfRole) {
-				blackRoles.push(`${werewolfRole.id < 10 ? '0' + werewolfRole.id : werewolfRole.id} ${werewolfRole.role}`);
-			} // Добавление Оборотня в массив blackRoles
-
-			const maniacRole = data.find(item => item.role.includes(roles.maniac.name));
-			if (maniacRole) {
-				blackRoles.push(`${maniacRole.id < 10 ? '0' + maniacRole.id : maniacRole.id} ${maniacRole.role}`);
-			} // Добавление Маньяка в массив blackRoles
-
 			data.forEach(item => {
 				if (
-					item.role.includes(roles.mistress.name) ||
-					item.role.includes(roles.sergeant.name) ||
 					item.role.includes(roles.commissar.name) ||
 					item.role.includes(roles.doctor.name)
 				) {

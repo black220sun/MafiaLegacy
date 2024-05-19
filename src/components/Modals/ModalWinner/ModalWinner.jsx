@@ -45,8 +45,6 @@ const ModalWinner = ({ visible, setVisible, gameParametres, setGameParametres, t
 					<div className={style.winnerBtns}>
 						<button className={style.btn} onClick={() => winnerClick(['Красные', '🔴'])}><span className='roleSpan'>Красные<span className='smile'>🔴</span></span></button>
 						<button className={style.btn} onClick={() => winnerClick(['Черные', '⚫️'])}><span className='roleSpan'>Черные <span className='smile'>⚫️</span></span></button>
-						{gameParametres.roles.maniac && gameParametres.roles.maniac.value && <button className={style.btn} onClick={() => winnerClick(['Маньяк', '🔪'])}><span className='roleSpan'>Маньяк <span className='smile'>🔪</span></span></button>}
-
 					</div>
 				</div>
 			</InfoBlock>

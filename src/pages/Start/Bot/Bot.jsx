@@ -110,22 +110,6 @@ const Bot = () => {
 						...prevParams.roles.doctor,
 						value: valuePlayers >= 11 ? 1 : null,
 					},
-					mistress: {
-						...prevParams.roles.mistress,
-						value: valuePlayers >= 12 ? 1 : null,
-					},
-					maniac: {
-						...prevParams.roles.maniac,
-						value: valuePlayers >= 13 ? 1 : null,
-					},
-					werewolf: {
-						...prevParams.roles.werewolf,
-						value: valuePlayers === 14 ? 1 : null,
-					},
-					sergeant: {
-						...prevParams.roles.sergeant,
-						value: valuePlayers >= 15 ? 1 : null,
-					},
 				},
 			}));
 			localStorage.setItem('valuePlayers', String(valuePlayers)); // Сохранение кол-ва игроков в localStorage

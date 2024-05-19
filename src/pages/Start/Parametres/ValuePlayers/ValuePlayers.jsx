@@ -54,22 +54,6 @@ const ValuePlayers = ({ valuePlayers, setValuePlayers, useDoctor }) => {
 				...prevRoles.doctor,
 				value: valuePlayers >= 11 || useDoctor ? 1 : null
 			}, // Условия кол-ва игроков для кол-ва роли Доктор
-			mistress: {
-				...prevRoles.mistress,
-				value: valuePlayers >= 12 ? 1 : null
-			}, // Условия кол-ва игроков для кол-ва роли Любовница
-			maniac: {
-				...prevRoles.maniac,
-				value: valuePlayers >= 13 ? 1 : null
-			}, // Условия кол-ва игроков для кол-ва роли Маньяк
-			werewolf: {
-				...prevRoles.werewolf,
-				value: valuePlayers === 14 ? 1 : null
-			}, // Условия кол-ва игроков для кол-ва роли Оборотень
-			sergeant: {
-				...prevRoles.sergeant,
-				value: valuePlayers >= 15 ? 1 : null
-			}, // Условия кол-ва игроков для кол-ва роли Сержант
 		})); // Установка/Обновление кол-ва и тип ролей на игру
 		localStorage.setItem('valuePlayers', String(valuePlayers)); // Сохранение кол-ва игроков в localStorage
 	}, [valuePlayers, useDoctor]); // Установка/Обновление кол-ва игроков и тип ролей на игру (какие роли будут в игре)
@@ -93,18 +77,6 @@ const ValuePlayers = ({ valuePlayers, setValuePlayers, useDoctor }) => {
 		if (roles.doctor.value) {
 			rolesArray.push(...Array(roles.doctor.value).fill([roles.doctor.name, roles.doctor.smile].join(' ')));
 		} // Доктор
-		if (roles.mistress.value) {
-			rolesArray.push(...Array(roles.mistress.value).fill([roles.mistress.name, roles.mistress.smile].join(' ')));
-		} // Любовница
-		if (roles.maniac.value) {
-			rolesArray.push(...Array(roles.maniac.value).fill([roles.maniac.name, roles.maniac.smile].join(' ')));
-		} // Маньяк
-		if (roles.werewolf.value) {
-			rolesArray.push(...Array(roles.werewolf.value).fill([roles.werewolf.name, roles.werewolf.smile].join(' ')));
-		} // Оборотень
-		if (roles.sergeant.value) {
-			rolesArray.push(...Array(roles.sergeant.value).fill([roles.sergeant.name, roles.sergeant.smile].join(' ')));
-		} // Сержант
 		// ///////////////////////////////
 
 		setDefaultRoles(
@@ -144,11 +116,6 @@ const ValuePlayers = ({ valuePlayers, setValuePlayers, useDoctor }) => {
 						<option value={8}>8</option>
 						<option value={9}>9</option>
 						<option value={10}>10</option>
-						<option value={11}>11</option>
-						<option value={12}>12</option>
-						<option value={13}>13</option>
-						<option value={14}>14</option>
-						<option value={15}>15</option>
 					</select>
 				</InfoBlock>
 			</div>
