@@ -11,28 +11,6 @@ const Autorization = () => {
 	const [isAuth, setIsAuth] = useState(JSON.parse(localStorage.getItem('Auth')) || false); // Состояние авторизации
 	const dataUsers = [
 		{ login: 'Demo', password: 'Demo', defaultTheme: 'dark5' },
-		{ login: 'Liunamme', password: 'termik2015', defaultTheme: 'dark5' },
-		{ login: 'Diktatura', password: 'pass1', defaultTheme: 'dark4' },
-		{ login: 'SoulMary', password: 'pass2', defaultTheme: 'light1' },
-		{ login: 'VEY', password: 'blooda0mee', defaultTheme: 'dark4' },
-		{ login: 'Rbz', password: 'pass4', defaultTheme: 'personal2' },
-		{ login: 'Commuraptor', password: 'pAss.SwordArtOnline', defaultTheme: 'light1' },
-		{ login: 'Ingrand', password: 'pass6', defaultTheme: 'dark5' },
-		{ login: 'Lega', password: 'pass7', defaultTheme: 'dark5' },
-		{ login: 'Passiflora', password: 'pass8', defaultTheme: 'dark5' },
-		{ login: 'Crazy007', password: 'pass9', defaultTheme: 'dark4' },
-		{ login: 'Cenny7', password: 'pass10', defaultTheme: 'dark5' },
-		{ login: 'DK46111', password: 'pass46111', defaultTheme: 'dark5' },
-		{ login: 'yayfeminism', password: 'yayfeminism', defaultTheme: 'dark5' },
-		{ login: 'upmazalumpa', password: 'upmazalumpa', defaultTheme: 'dark5' },
-		{ login: 'toriavenom', password: 'toriavenom', defaultTheme: 'dark5' },
-		{ login: 'viktor', password: 'viktor', defaultTheme: 'dark5' },
-		{ login: 'prostf1k', password: 'prostf1k', defaultTheme: 'dark5' },
-		{ login: 'Dantes', password: 'Dantes', defaultTheme: 'dark5' },
-		{ login: 'Koneko', password: 'Koneko', defaultTheme: 'dark5' },
-		{ login: 'ARTNK', password: 'ARTNK', defaultTheme: 'dark5' },
-		{ login: 'ssskam', password: 'ssskam', defaultTheme: 'dark5' },
-		{ login: 'Wanderreror', password: 'Wanderreror', defaultTheme: 'dark5' },
 	] // База пользователей
 	// /////////////////////
 	// Отрисовка компонентов
