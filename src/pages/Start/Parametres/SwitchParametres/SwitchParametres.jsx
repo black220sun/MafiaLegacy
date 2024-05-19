@@ -48,10 +48,10 @@ const SwitchParametres = () => {
 	// Отрисовка компонентов
 	return (
 		<>
-			<div className='parametr'>
+			{/*<div className='parametr'>
 				<div>ИГРА С БОТОМ:</div>
 				<Switch2 state={bot} changeState={setBot} />
-			</div> {/* Кол-во фолов */}
+			</div>*/} {/* Кол-во фолов */}
 			<div className='parametr'>
 				<div>КОЛ-ВО ФОЛОВ:</div>
 				<Switch2ON value={[4, 5]} state={fallsMax} changeState={setFallsMax} />
