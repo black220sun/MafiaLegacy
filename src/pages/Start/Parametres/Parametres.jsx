@@ -14,6 +14,7 @@ const Parametres = () => {
 	const { isAuth } = useContext(AutorizationContext); // Получение состояний из авторизации
 	const { changePage } = useContext(AppRouterContext); // Получение состояний из AppRouter
 	const [valuePlayers, setValuePlayers] = useState(parseInt(localStorage.getItem('valuePlayers')) || gameParametres.valuePlayers || '#'); // Состояние кол-ва игроков
+	const useDoctor = gameParametres.useDoctor;
 	// /////////////////////////////////////////////////////////
 	// Функционал
 
@@ -21,12 +22,13 @@ const Parametres = () => {
 		if (gameParametres.valuePlayers || valuePlayers !== '#') {
 			localStorage.setItem('startGame', JSON.stringify(true)); // Сохранение параметров игры в localStorage
 			localStorage.setItem('gameParametres', JSON.stringify(gameParametres)); // Сохранение параметров игры в localStorage
-			localStorage.removeItem('valuePlayers');
+			//localStorage.removeItem('valuePlayers');
 			localStorage.removeItem('roleData');
 			localStorage.removeItem('slotData');
-			localStorage.removeItem('fallsMax');
-			localStorage.removeItem('plus30');
-			localStorage.removeItem('badWords');
+			//localStorage.removeItem('fallsMax');
+			//localStorage.removeItem('plus30');
+			//localStorage.removeItem('badWords');
+			//localStorage.removeItem('useDoctor');
 			changePage(link) // переадресовывает на другую страницу и на любые другие нельзя будет перейти
 		}
 		else {
@@ -62,7 +64,7 @@ const Parametres = () => {
 				<div className='content'>
 					<div className={style.parametresSection}>
 						<SwitchParametres />
-						{!bot && <ValuePlayers valuePlayers={valuePlayers} setValuePlayers={setValuePlayers} />}
+						{!bot && <ValuePlayers valuePlayers={valuePlayers} setValuePlayers={setValuePlayers} useDoctor={useDoctor}/>}
 					</div> {/* Сюда можно добавлять новые параметры */}
 					<ThemesBtn /> {/* Кнопка темы открывающая модальное окно с темами */}
 				</div>

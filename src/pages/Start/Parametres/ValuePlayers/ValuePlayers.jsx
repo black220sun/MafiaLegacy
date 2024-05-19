@@ -5,7 +5,7 @@ import { StoreContext } from '../../../../context/context';
 import InfoBlock from '../../../../components/UI/InfoBlock/InfoBlock';
 /////////////////////////////////////////////////////
 
-const ValuePlayers = ({ valuePlayers, setValuePlayers }) => {
+const ValuePlayers = ({ valuePlayers, setValuePlayers, useDoctor }) => {
 	// Состояния
 	const { roles, setRoles, setGameParametres, setIsGameRolesChanged, setDefaultRoles, theme } = useContext(StoreContext); // Получение состояний из глобального хранилища
 	// /////////////////////////////////////////////////////////
@@ -29,36 +29,30 @@ const ValuePlayers = ({ valuePlayers, setValuePlayers }) => {
 			...prevRoles,
 			civilian: {
 				...prevRoles.civilian,
-				value: valuePlayers >= 9 && valuePlayers <= 11
-					? 6
-					: valuePlayers >= 12 && valuePlayers <= 15
-						? 5
-						: null
+				value: valuePlayers >= 12 ? 5
+					: valuePlayers >= 9 ? 6
+					: valuePlayers >= 6 ? valuePlayers - (useDoctor ? 4 : 3)
+					: null
 			}, // Условия кол-ва игроков для кол-ва роли Мирный
 			mafia: {
 				...prevRoles.mafia,
-				value:
-					valuePlayers === 9
-						? 1
-						: valuePlayers === 10 || valuePlayers === 11
-							? 2
-							: valuePlayers >= 12 && valuePlayers <= 14
-								? 3
-								: valuePlayers >= 15
-									? 4
-									: null
+				value: valuePlayers >= 15 ? 4
+					: valuePlayers >= 12 ? 3
+					: valuePlayers >= 10 ? 2
+					: valuePlayers >= 6 ? 1
+					: null
 			}, // Условия кол-ва игроков для кол-ва роли Мафия
 			don: {
 				...prevRoles.don,
-				value: valuePlayers >= 9 ? 1 : null
+				value: valuePlayers >= 6 ? 1 : null
 			}, // Условия кол-ва игроков для кол-ва роли Дон
 			commissar: {
 				...prevRoles.commissar,
-				value: valuePlayers >= 9 ? 1 : null
+				value: valuePlayers >= 6 ? 1 : null
 			}, // Условия кол-ва игроков для кол-ва роли Комиссар
 			doctor: {
 				...prevRoles.doctor,
-				value: valuePlayers >= 11 ? 1 : null
+				value: valuePlayers >= 11 || useDoctor ? 1 : null
 			}, // Условия кол-ва игроков для кол-ва роли Доктор
 			mistress: {
 				...prevRoles.mistress,
@@ -78,7 +72,7 @@ const ValuePlayers = ({ valuePlayers, setValuePlayers }) => {
 			}, // Условия кол-ва игроков для кол-ва роли Сержант
 		})); // Установка/Обновление кол-ва и тип ролей на игру
 		localStorage.setItem('valuePlayers', String(valuePlayers)); // Сохранение кол-ва игроков в localStorage
-	}, [valuePlayers]); // Установка/Обновление кол-ва игроков и тип ролей на игру (какие роли будут в игре)
+	}, [valuePlayers, useDoctor]); // Установка/Обновление кол-ва игроков и тип ролей на игру (какие роли будут в игре)
 
 	useEffect(() => {
 		const rolesArray = []; // Локальный массив ролей
@@ -122,7 +116,7 @@ const ValuePlayers = ({ valuePlayers, setValuePlayers }) => {
 			...prevParams,
 			roles: roles,
 		})); // добавление roles в gameParametres.roles
-	}, [valuePlayers, roles]); // Установка/Обновление дефолтных ролей (прямое добавление ролей в массив) / Добавление roles в gameParametres.roles
+	}, [valuePlayers, roles, useDoctor]); // Установка/Обновление дефолтных ролей (прямое добавление ролей в массив) / Добавление roles в gameParametres.roles
 
 
 	const handleSelectChange = (event) => {
@@ -145,6 +139,9 @@ const ValuePlayers = ({ valuePlayers, setValuePlayers }) => {
 						onChange={handleSelectChange}
 					>
 						<option value='#' disabled>#</option>
+						<option value={6}>6</option>
+						<option value={7}>7</option>
+						<option value={8}>8</option>
 						<option value={9}>9</option>
 						<option value={10}>10</option>
 						<option value={11}>11</option>

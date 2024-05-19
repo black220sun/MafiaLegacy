@@ -5,12 +5,13 @@ import { StoreContext } from '../../../../context/context';
 import Switch2ON from '../../../../components/UI/CustomSwitch/Switch2ON/Switch2ON';
 /////////////////////////////////////////////////////
 
-const SwitchParametres = ({ setValuePlayers }) => {
+const SwitchParametres = () => {
 	// Состояния
 	const { setGameParametres, bot, setBot } = useContext(StoreContext); // Получение состояний из глобального хранилища
 	const [fallsMax, setFallsMax] = useState(parseInt(localStorage.getItem('fallsMax')) || 4); // Состояние указанного максимального кол-ва фоллов
 	const [plus30, setPlus30] = useState(JSON.parse(localStorage.getItem('plus30')) || false); // Состояние будет ли использоваться plus30
 	const [badWords, setBadWords] = useState(JSON.parse(localStorage.getItem('badWords')) || false); // Состояние запрещена ли ненормативная лексика
+	const [useDoctor, setUseDoctor] = useState(JSON.parse(localStorage.getItem('useDoctor')) || false); // Состояние разрешена ли роль Доктора
 	// /////////////////////////////////////////////////////////
 	// Функционал
 
@@ -23,14 +24,16 @@ const SwitchParametres = ({ setValuePlayers }) => {
 			fallsMax: fallsMax,
 			plus30: plus30,
 			badWords: badWords,
+			useDoctor: useDoctor,
 		}));
 		// сохранение в localStorage
 		localStorage.setItem('bot', bot);
 		localStorage.setItem('fallsMax', fallsMax);
 		localStorage.setItem('plus30', plus30);
 		localStorage.setItem('badWords', badWords);
+		localStorage.setItem ('useDoctor', useDoctor);
 		// ///////////////////////////////////////
-	}, [bot, fallsMax, plus30, badWords]); // Управление состоянием fallsMax plus30 badWords (всё что на переключателях Switch)
+	}, [bot, fallsMax, plus30, badWords, useDoctor]); // Управление состоянием fallsMax plus30 badWords (всё что на переключателях Switch)
 
 	useEffect(() => {
 		setGameParametres((prevParams) => ({
@@ -61,6 +64,10 @@ const SwitchParametres = ({ setValuePlayers }) => {
 				<div>ЗАПРЕТ НА МАТ:</div>
 				<Switch2 state={badWords} changeState={setBadWords} />
 			</div> {/* Фолл за мат */}
+			<div className='parametr'>
+				<div>ИГРА С ДОКТОРОМ:</div>
+				<Switch2 state={useDoctor} changeState={setUseDoctor} />
+			</div> {/* Разрешить роль Доктора */}
 		</> // Сюда можно добавлять новые параметры
 	);
 	// /////////////////////////////////////
